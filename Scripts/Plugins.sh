@@ -28,6 +28,9 @@ git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr.git ./jerrykuku/VSSR
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git ./jerrykuku/lua-maxminddb
 
+git clone --depth=1 https://github.com/kenzok8/luci-theme-ifit.git ./theme/ifit
+git clone --depth=1 https://github.com/gngpp/luci-theme-design.git ./theme/design
+
 #预置OpenClash内核和GEO数据
 export CORE_VER=https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version
 export CORE_TUN=https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linux
