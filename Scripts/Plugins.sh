@@ -13,8 +13,19 @@ git clone --depth=1 --single-branch https://github.com/linkease/nas-packages-luc
 #Open Clash
 git clone --depth=1 --single-branch --branch "dev" https://github.com/vernesong/OpenClash.git
 #Pass Wall
-git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall.git
-git clone --depth=1 --single-branch https://github.com/xiaorouji/openwrt-passwall-packages.git
+git clone --depth=1 --single-branch --branch "main" https://github.com/xiaorouji/openwrt-passwall.git ./pw_luci
+git clone --depth=1 --single-branch --branch "main" https://github.com/xiaorouji/openwrt-passwall-packages.git ./pw_packages
+
+#Pass Wall2
+git clone --depth=1 --single-branch --branch "main" https://github.com/xiaorouji/openwrt-passwall2.git ./passwall2
+#git clone --depth=1 --single-branch --branch "main" https://github.com/xiaorouji/openwrt-passwall-packages.git ./passwall_packages
+
+#helloworld
+#git clone --depth=1 --single-branch https://github.com/fw876/helloworld.git ./helloworld
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+
+#VSSR
+git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr.git ./VSSR
 
 #预置OpenClash内核和GEO数据
 export CORE_VER=https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version
