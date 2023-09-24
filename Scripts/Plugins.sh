@@ -25,7 +25,8 @@ git clone --depth=1 --single-branch --branch "main" https://github.com/xiaorouji
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
 #VSSR
-git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr.git ./VSSR
+git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr.git ./jerrykuku/VSSR
+git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb ./jerrykuku/lua-maxminddb
 
 #预置OpenClash内核和GEO数据
 export CORE_VER=https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version
