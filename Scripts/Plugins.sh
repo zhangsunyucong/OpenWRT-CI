@@ -31,6 +31,11 @@ git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git ./jerrykuku/l
 git clone --depth=1 https://github.com/kenzok8/luci-theme-ifit.git ./theme/ifit
 git clone --depth=1 https://github.com/gngpp/luci-theme-design.git ./theme/design
 
+#Home Proxy
+if [[ $OWRT_URL == *"immortalwrt"* ]] ; then
+  git clone --depth=1 --single-branch --branch "master" https://github.com/immortalwrt/homeproxy.git
+  git clone --depth=1 --single-branch --branch "dev" https://github.com/immortalwrt/homeproxy.git
+fi
 #预置OpenClash内核和GEO数据
 export CORE_VER=https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version
 export CORE_TUN=https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linux
