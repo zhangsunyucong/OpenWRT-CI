@@ -1,5 +1,26 @@
 #!/bin/bash
 
+#更新软件包
+UPDATE_PACKAGE() {
+	local pkg_name=$1
+	local pkg_repo=$2
+	local pkg_branch=$3
+	local pkg_special=$4
+	local repo_name=$(echo $pkg_repo | cut -d '/' -f 2)
+
+	rm -rf $(find ../feeds/luci/ -type d -iname "*$pkg_name*" -prune)
+
+	git clone --depth=1 --single-branch --branch $pkg_branch "https://github.com/$pkg_repo.git"
+
+	if [[ $pkg_special == "true" ]]; then
+		cp -rf $(find ./$repo_name/ -type d -iname "*$pkg_name*" -prune) ./
+		rm -rf ./$repo_name
+	fi
+}
+
+UPDATE_PACKAGE "tinyfilemanager" "muink/luci-app-tinyfilemanager" "master"
+UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5"
+
 #Design Theme
 git clone --depth=1 --single-branch --branch $(echo $OWRT_URL | grep -iq "lede" && echo "main" || echo "js") https://github.com/gngpp/luci-theme-design.git
 git clone --depth=1 --single-branch https://github.com/gngpp/luci-app-design-config.git
@@ -33,8 +54,9 @@ git clone --depth=1 https://github.com/gngpp/luci-theme-design.git ./theme/desig
 
 #Home Proxy
 if [[ $OWRT_URL == *"immortalwrt"* ]] ; then
-  git clone --depth=1 --single-branch --branch "master" https://github.com/immortalwrt/homeproxy.git
-  git clone --depth=1 --single-branch --branch "dev" https://github.com/immortalwrt/homeproxy.git
+  UPDATE_PACKAGE "homeproxy" "muink/homeproxy" "mdev"
+  #git clone --depth=1 --single-branch --branch "master" https://github.com/immortalwrt/homeproxy.git
+  #git clone --depth=1 --single-branch --branch "dev" https://github.com/immortalwrt/homeproxy.git
 fi
 #预置OpenClash内核和GEO数据
 export CORE_VER=https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version
