@@ -85,8 +85,8 @@ jobs:
           find ./ -maxdepth 2 -type f -iregex ".*\(txt\|sh\)$" -exec dos2unix {} \; -exec chmod +x {} \;
 
       - name: Check Caches
-        id: check-cache
         if: env.WRT_CFG == 'false'
+        id: check-cache
         uses: actions/cache@main
         with:
           path: ./wrt/staging_dir
@@ -95,15 +95,15 @@ jobs:
       - name: Update Caches
         if: env.WRT_CFG == 'false'
         run: |
-          if ${{steps.cache-npm.outputs.cache-hit == 'true'}}; then
-            sed -i 's/ $(tool.*\/stamp-compile)//;' ./wrt/Makefile
-            sed -i 's/ $(tool.*\/stamp-install)//;' ./wrt/Makefile
+          if ${{steps.check-cache.outputs.cache-hit == 'true'}}; then
+            sed -i 's/ $(tool.*\/stamp-compile)//g' ./wrt/Makefile
+            sed -i 's/ $(tool.*\/stamp-install)//g' ./wrt/Makefile
 
             echo "toolchain skiped done!"
           else
             gh extension install actions/gh-actions-cache
 
-            CACHE_LIST=$(gh actions-cache list --key "$WRT_SOURCE-$WRT_TARGET")
+            CACHE_LIST=$(gh actions-cache list --key "$WRT_SOURCE-$WRT_TARGET" | cut -f 1)
             for CACHE_KEY in $CACHE_LIST; do
                gh actions-cache delete $CACHE_KEY --confirm
             done
@@ -174,9 +174,9 @@ jobs:
 
             for var in $WRT_TYPE ; do
               for file in $(find ./bin/targets/ -type f -iname "*$var*.*") ; do
-                export ext=$(basename $file | cut -d '.' -f 2-)
-                export name=$(basename $file | cut -d '.' -f 1 | grep -io "\($var\).*")
-                export new_file="$WRT_SOURCE"_"$name"_"$WRT_DATE"."$ext"
+                ext=$(basename $file | cut -d '.' -f 2-)
+                name=$(basename $file | cut -d '.' -f 1 | grep -io "\($var\).*")
+                new_file="$WRT_SOURCE"_"$name"_"$WRT_DATE"."$ext"
                 mv -f $file ./upload/$new_file
               done
             done
