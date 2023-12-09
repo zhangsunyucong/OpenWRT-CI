@@ -51,12 +51,6 @@ CONFIG_PACKAGE_luci-app-unishare=y
 CONFIG_PACKAGE_luci-app-quickstart=y
 CONFIG_PACKAGE_luci-app-kodexplorer=y
 
-CONFIG_PACKAGE_luci-app-turboacc=y
-CONFIG_PACKAGE_luci-app-openclash=y
-CONFIG_PACKAGE_luci-app-autoreboot=y
-CONFIG_PACKAGE_luci-app-fileassistant=y
-CONFIG_PACKAGE_luci-app-uugamebooster=y
-
 #tailscale
 CONFIG_PACKAGE_tailscale=y
 
