@@ -81,17 +81,21 @@ jobs:
           git clone --depth=1 --single-branch --branch $WRT_BRANCH $WRT_URL ./wrt/
 
       - name: Check Caches
+        id: check-cache
         if: env.WRT_CFG == 'false'
         uses: stupidloud/cachewrtbuild@main
         with:
           ccache: 'true'
           prefix: ${{github.workspace}}/wrt
           mixkey: ${{env.WRT_SOURCE}}-${{env.WRT_TARGET}}
-          clean: ${{contains(github.event.action, 'nocache')}}
 
       - name: Check Scripts
         run: |
           find ./ -maxdepth 2 -type f -iregex ".*\(txt\|sh\)$" -exec dos2unix {} \; -exec chmod +x {} \;
+
+          for key in ${{steps.check-cache.outputs}}; do
+            echo $key
+          done
 
       - name: Update Feeds
         run: |
@@ -179,3 +183,16 @@ jobs:
             设备：${{env.WRT_TYPE}}
             密码：${{env.WRT_PW}}
             地址：${{env.WRT_IP}}
+
+      - name: Cleanup Caches
+        if: env.WRT_CFG == 'false' && steps.check-cache.outputs.cache-hit != 'true'
+        run: |
+          gh extension install actions/gh-actions-cache
+
+          cache_list=$(gh actions-cache list --key "$WRT_SOURCE-$WRT_TARGET")
+
+          for cache_key in $cache_list; do
+            gh actions-cache delete $cache_key --confirm
+          done
+
+          echo "cleanup caches done!"
