@@ -31,8 +31,8 @@ UPDATE_PACKAGE "passwall-packages" "xiaorouji/openwrt-passwall-packages" "main"
 UPDATE_PACKAGE "helloworld" "fw876/helloworld" "master"
 UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev"
 UPDATE_PACKAGE "istore" "linkease/istore" "main"
-UPDATE_PACKAGE "nas-packages" "linkease/nas-packages" "master"
-UPDATE_PACKAGE "nas-packages-luci" "linkease/nas-packages-luci" "main"
+UPDATE_PACKAGE "linkease_nas" "linkease/nas-packages" "master"
+UPDATE_PACKAGE "linkease_nas_luci" "linkease/nas-packages-luci" "main"
 
 if [[ $WRT_URL == *"immortalwrt"* ]]; then
 	UPDATE_PACKAGE "homeproxy" "immortalwrt/homeproxy" "dev"
