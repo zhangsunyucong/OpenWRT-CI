@@ -12,9 +12,11 @@ UPDATE_PACKAGE() {
 
 	git clone --depth=1 --single-branch --branch $pkg_branch "https://github.com/$pkg_repo.git"
 
-	if [[ $pkg_special == "true" ]]; then
+	if [[ $pkg_special == "pkg" ]]; then
 		cp -rf $(find ./$repo_name/ -type d -iname "*$pkg_name*" -prune) ./
 		rm -rf ./$repo_name
+	elif [[ $pkg_special == "name" ]]; then
+		mv -f $repo_name $pkg_name
 	fi
 }
 
@@ -33,7 +35,6 @@ UPDATE_PACKAGE "nas-packages" "linkease/nas-packages" "master"
 UPDATE_PACKAGE "nas-packages-luci" "linkease/nas-packages-luci" "main"
 
 if [[ $WRT_URL == *"immortalwrt"* ]]; then
-	#UPDATE_PACKAGE "homeproxy" "muink/homeproxy" "mdev"
 	UPDATE_PACKAGE "homeproxy" "immortalwrt/homeproxy" "dev"
 fi
 
@@ -58,5 +59,5 @@ UPDATE_VERSION() {
 	fi
 }
 
-UPDATE_VERSION "sing-box" "1.7.2" "74bbe97b0f8df19c1196deda4ad53edc75c57259f51f88391d66071a315829d7"
+UPDATE_VERSION "sing-box" "1.7.4" "483c7188f054dffc37211a4c6d50edc7473f9cbbe57c5687bb3551aba3919e52"
 UPDATE_VERSION "naiveproxy" "119.0.6045.66-1" "b979e575353ec67a00a36a25fbf506fbbe41ea95e10ff5f60123e4be9f20eb83"
