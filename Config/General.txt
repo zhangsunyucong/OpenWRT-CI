@@ -50,7 +50,6 @@ CONFIG_PACKAGE_luci-app-istorex=y
 CONFIG_PACKAGE_luci-app-linkease=y
 CONFIG_PACKAGE_luci-app-unishare=y
 CONFIG_PACKAGE_luci-app-quickstart=y
-CONFIG_PACKAGE_luci-app-kodexplorer=y
 
 #tailscale
 CONFIG_PACKAGE_tailscale=y
