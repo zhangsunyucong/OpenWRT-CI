@@ -43,9 +43,9 @@ CONFIG_PACKAGE_luci-app-accesscontrol=n
 CONFIG_PACKAGE_luci-app-fileassistant=n
 
 #passwall
-CONFIG_PACKAGE_luci-app-passwall=y
+#CONFIG_PACKAGE_luci-app-passwall=y
 #passwall2
-CONFIG_PACKAGE_luci-app-passwall2=y
+#CONFIG_PACKAGE_luci-app-passwall2=y
 
 #tailscale
 CONFIG_PACKAGE_tailscale=y
