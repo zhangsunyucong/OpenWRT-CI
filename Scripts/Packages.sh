@@ -39,6 +39,8 @@ UPDATE_PACKAGE "gecoosac" "lwb1978/openwrt-gecoosac" "main"
 UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
 UPDATE_PACKAGE "mihomo" "morytyann/OpenWrt-mihomo" "main" "pkg"
 
+UPDATE_PACKAGE "advancedplus" "VIKINGYFY/luci-app-advancedplus" "main"
+
 #更新软件包版本
 UPDATE_VERSION() {
 	local PKG_NAME=$1
