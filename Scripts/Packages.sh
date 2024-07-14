@@ -36,10 +36,8 @@ UPDATE_PACKAGE "nas-packages-luci" "linkease/nas-packages-luci" "main"
 
 UPDATE_PACKAGE "gecoosac" "lwb1978/openwrt-gecoosac" "main"
 
-if [[ $WRT_URL != *"lede"* ]]; then
-	UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "dev"
-	UPDATE_PACKAGE "mihomo" "morytyann/OpenWrt-mihomo" "main" "pkg"
-fi
+UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
+UPDATE_PACKAGE "mihomo" "morytyann/OpenWrt-mihomo" "main" "pkg"
 
 #更新软件包版本
 UPDATE_VERSION() {
