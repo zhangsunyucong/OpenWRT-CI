@@ -41,6 +41,11 @@ UPDATE_PACKAGE "luci-app-gecoosac" "lwb1978/openwrt-gecoosac" "main"
 UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
 UPDATE_PACKAGE "luci-app-wolplus" "VIKINGYFY/packages" "main" "pkg"
 
+#Linkease
+UPDATE_PACKAGE "istore" "linkease/istore" "main"
+UPDATE_PACKAGE "nas-packages" "linkease/nas-packages" "master"
+UPDATE_PACKAGE "nas-packages-luci" "linkease/nas-packages-luci" "main"
+
 if [[ $WRT_REPO != *"immortalwrt"* ]]; then
 	UPDATE_PACKAGE "qmi-wwan" "immortalwrt/wwan-packages" "master" "pkg"
 fi
